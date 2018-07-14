@@ -8,10 +8,19 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: NavigationDrawerController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let sideMenu = self.storyboard!.instantiateViewController(withIdentifier: "navigationDrawer")
+        super.roundCorners = false
+        super.animateStatusBar = false
+        super.rootViewAnimation = .none
+        super.rootViewBackgroundColor = .red
+        super.menuPosition = .front
+        super.setNavigationDrawer(ViewController: sideMenu)
+
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -21,5 +30,8 @@ class ViewController: UIViewController {
     }
 
 
+    @IBAction func openMenu(_ sender: UIButton) {
+        super.openMenu()
+    }
 }
 
